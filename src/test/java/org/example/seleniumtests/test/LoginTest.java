@@ -1,6 +1,6 @@
 package org.example.seleniumtests.test;
 
-import org.example.seleniumtests.page.HomePage;
+import org.example.selenium.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

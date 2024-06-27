@@ -1,6 +1,6 @@
 package org.example.seleniumtests.test;
 
-import org.example.seleniumtests.driver.DriverSingleton;
+import org.example.selenium.driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
