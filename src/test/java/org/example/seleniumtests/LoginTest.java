@@ -1,6 +1,8 @@
-package org.example.seleniumtests.test;
+package org.example.seleniumtests;
 
+import org.example.selenium.enums.Capability;
 import org.example.selenium.pages.HomePage;
+import org.example.selenium.utils.PropertyReader;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -37,8 +39,8 @@ public class LoginTest extends BaseTest{
         HomePage homepage = new HomePage(driver);
         boolean isAccountPresent = homepage.openURL()
                 .clickLoginButton()
-                .inputLogin("chessknock20@gmail.com")
-                .inputPassword("110v354m")
+                .inputLogin(PropertyReader.getUserProperty(Capability.LOGIN))
+                .inputPassword(PropertyReader.getUserProperty(Capability.PASSWORD))
                 .confirm()
                 .myAccountButtonIsPresent();
         Assert.assertTrue(isAccountPresent, "My account button is not displayed");

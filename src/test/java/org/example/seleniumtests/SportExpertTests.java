@@ -1,4 +1,4 @@
-package org.example.seleniumtests.test;
+package org.example.seleniumtests;
 
 import org.example.selenium.pages.HomePage;
 import org.testng.Assert;
