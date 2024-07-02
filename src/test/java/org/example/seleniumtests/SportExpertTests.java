@@ -13,11 +13,24 @@ public class SportExpertTests extends BaseTest {
         String result = homepage.openURL()
                 .inputSearchingProduct(product)
                 .clickSeachButton()
-                .selectMagnesiunItem()
+                .selectMagnesiumItem()
                 .addToCart()
                 .closeAlert()
                 .clickCartButton()
                 .getTextMagnesium();
         Assert.assertEquals(result, "Magnesium Citrate от VPLab ( 90 капс)");
     }
+
+    @Test
+    public void FindAllItems(){
+        HomePage homepage = new HomePage(driver);
+        String product = "caffeine";
+        int result = homepage.openURL()
+                .inputSearchingProduct(product)
+                .clickSeachButton()
+                .countCaffeineItems();
+        Assert.assertEquals(result, 6);
+
+    }
+
 }
