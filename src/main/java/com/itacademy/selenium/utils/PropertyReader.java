@@ -1,10 +1,10 @@
-package org.example.selenium.utils;
+package com.itacademy.selenium.utils;
 
+import com.itacademy.selenium.enums.Capability;
+import com.itacademy.selenium.enums.PropertyFile;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.selenium.enums.Capability;
-import org.example.selenium.enums.PropertyFile;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,11 +31,23 @@ public class PropertyReader {
         }
         return properties.getProperty(capability.getKey(), capability.getDefaultValue());
     }
+//    public static String getUserProperty(String key) {
+//
+//        Properties properties = new Properties();
+//        try {
+//            FileReader fileReader = new FileReader("src/main/resources/" + PropertyFile.USER.getPathToFile());
+//            properties.load(fileReader);
+//        } catch (IOException e) {
+//            LOGGER.info("Properties are not loaded. Use default value");
+//        }
+//
+//        return properties.getProperty(key);
+//    }
 
     public static String getConfigProperty(Capability capability) {
         return getProperty(PropertyFile.CONFIG, capability);
     }
-    public static String getUserProperty(Capability capability) {
-        return getProperty(PropertyFile.USER, capability);
-    }
+//    public static String getUserProperty(Capability capability) {
+//        return getProperty(PropertyFile.USER, capability);
+//    }
 }

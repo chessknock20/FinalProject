@@ -1,50 +1,51 @@
-package org.example.selenium.pages;
+package com.itacademy.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
 
     @FindBy(id = ("input-email"))
-    private WebElement InputLoginArea;
+    private WebElement inputLoginArea;
 
     @FindBy(id = ("input-password"))
-    private WebElement InputPasswordArea;
+    private WebElement inputPasswordArea;
 
     @FindBy(xpath = ("//button[@class = 'btn btn-primary']"))
-    private WebElement LoginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = ("//div[@class = 'alert alert-danger']"))
-    private WebElement AlertIncorrectData;
+    private WebElement alertIncorrectData;
 
     @FindBy(id = "gs-account")
-    private WebElement MyAccountButton;
+    private WebElement myAccountButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public LoginPage inputLogin(String login){
-        InputLoginArea.sendKeys(login);
+        inputLoginArea.sendKeys(login);
         return this;
     }
 
     public LoginPage inputPassword(String password){
-        InputPasswordArea.sendKeys(password);
+        inputPasswordArea.sendKeys(password);
         return this;
     }
 
     public LoginPage confirm(){
-        LoginButton.click();
+        loginButton.click();
         return this;
     }
     public String readAlert(){
-        return AlertIncorrectData.getText();
+        return alertIncorrectData.getText();
     }
 
     public boolean myAccountButtonIsPresent(){
-        return MyAccountButton.isDisplayed();
+        return myAccountButton.isDisplayed();
     }
 
 }

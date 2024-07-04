@@ -1,4 +1,4 @@
-package org.example.selenium.listeners;
+package com.itacademy.selenium.listeners;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

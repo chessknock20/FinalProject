@@ -1,9 +1,8 @@
-package org.example.apitests;
+package com.itacademy.apitests;
 
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import org.example.selenium.enums.Capability;
-import org.example.selenium.utils.PropertyReader;
+import com.itacademy.selenium.utils.PropertyReader;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -14,22 +13,22 @@ import static io.restassured.RestAssured.given;
 public class ApiTests extends BaseApiTest {
 
     @Test
-    public void clickSignIn(){
+    public void testGetLogin(){
         given().log().uri()
                 .when().get("/login/")
                 .then().log().all().statusCode(200);
     }
 
     @Test
-    public void SignInAuth(){
+    public void testSignInAuth(){
         given()
-                .auth().basic(PropertyReader.getUserProperty(Capability.LOGIN), PropertyReader.getUserProperty(Capability.PASSWORD))
+                .auth().basic("chessknock20@gmail.com","110v354m")
                 .when().get("/login/")
                 .then().log().all().statusCode(200);
     }
 
     @Test
-    public void SignInPostJsonFile() {
+    public void testPostJsonFile() {
         File file = new File("src/test/resources/json/user.json");
         given().log().all().contentType(ContentType.JSON).body(file)
                 .when().post("/login/")
@@ -37,7 +36,7 @@ public class ApiTests extends BaseApiTest {
     }
 
     @Test
-    public void AddToCart(){
+    public void testAddToCart(){
         given().log().all().contentType(ContentType.JSON).body("{\n" +
                         "    \"quantity\": \"1\",\n" +
                         "    \"product_id\": \"1488\"\n" +
@@ -47,8 +46,8 @@ public class ApiTests extends BaseApiTest {
     }
 
     @Test
-    public void TestJsonSchema(){
-        given().log().uri()
+    public void testJsonSchema(){
+        given().header("accept","application/json, text/javascript, */*; q=0.01").header("content-type", "application/x-www-form-urlencoded; charset=UTF-8").log().uri().body("quantity=1&product_id=1488")
                 .when().post("/index.php?route=checkout/cart/add")
                 .then().log().all().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("json/jsonschema.json"));
 

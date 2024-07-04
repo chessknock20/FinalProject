@@ -2,15 +2,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "quantity": {
+    "success": {
       "type": "string"
     },
-    "product_id": {
+    "total": {
+      "type": "string"
+    },
+    "count": {
       "type": "string"
     }
   },
   "required": [
-    "quantity",
-    "product_id"
+    "success",
+    "total",
+    "count"
   ]
 }

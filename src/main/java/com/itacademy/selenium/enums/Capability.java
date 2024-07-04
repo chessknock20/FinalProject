@@ -1,10 +1,8 @@
-package org.example.selenium.enums;
+package com.itacademy.selenium.enums;
 
 public enum Capability {
 
-    BROWSER("browser", "chrome"),
-    LOGIN("login", "chessknock20@gmail.com"),
-    PASSWORD("password", "110v354m");
+    BROWSER("browser", "chrome");
 
     private String key;
     private String defaultValue;

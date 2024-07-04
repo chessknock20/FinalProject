@@ -1,4 +1,4 @@
-package org.example.selenium.pages;
+package com.itacademy.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,20 +8,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class CartPage extends BasePage {
 
-    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+//    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     @FindBy(xpath = ("//img[@class = 'cart-ico-vm']"))
     private WebElement cartButton;
 
     @FindBy(xpath = ("//td[contains(text(), ' Magnesium Citrate от VPLab ( 90 капс)')]"))
-    private WebElement magnesiunItom;
+    private WebElement magnesiumItem;
 
-    public CartPage(WebDriver driver) {
-        super(driver);
+    public CartPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public CartPage closeAlert(){
@@ -32,11 +30,11 @@ public class CartPage extends BasePage {
     }
 
     public CartPage clickCartButton(){
-        cartButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(cartButton)).click();
         return this;
     }
 
     public String getTextMagnesium(){
-        return magnesiunItom.getText();
+        return magnesiumItem.getText();
     }
 }

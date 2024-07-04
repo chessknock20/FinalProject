@@ -1,4 +1,4 @@
-package org.example.selenium.utils;
+package com.itacademy.selenium.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

@@ -1,4 +1,4 @@
-package org.example.apitests;
+package com.itacademy.apitests;
 
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeMethod;

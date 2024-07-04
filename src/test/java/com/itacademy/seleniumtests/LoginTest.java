@@ -1,8 +1,7 @@
-package org.example.seleniumtests;
+package com.itacademy.seleniumtests;
 
-import org.example.selenium.enums.Capability;
-import org.example.selenium.pages.HomePage;
-import org.example.selenium.utils.PropertyReader;
+import com.itacademy.selenium.pages.HomePage;
+import com.itacademy.selenium.utils.PropertyReader;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,8 +22,8 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(dataProvider = "data")
-    public void IncorrectLogin(String name, String password, String errorMessage){
-        HomePage homepage = new HomePage(driver);
+    public void testLoginInvalidUser(String name, String password, String errorMessage){
+        HomePage homepage = new HomePage(driver, wait);
         String message = homepage.openURL()
                 .clickLoginButton()
                 .inputLogin(name)
@@ -35,12 +34,12 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void CorrectLogin(){
-        HomePage homepage = new HomePage(driver);
+    public void testLoginValidUser(){
+        HomePage homepage = new HomePage(driver, wait);
         boolean isAccountPresent = homepage.openURL()
                 .clickLoginButton()
-                .inputLogin(PropertyReader.getUserProperty(Capability.LOGIN))
-                .inputPassword(PropertyReader.getUserProperty(Capability.PASSWORD))
+                .inputLogin("chessknock20@gmail.com")
+                .inputPassword("110v354m")
                 .confirm()
                 .myAccountButtonIsPresent();
         Assert.assertTrue(isAccountPresent, "My account button is not displayed");

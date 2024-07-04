@@ -1,16 +1,13 @@
-package org.example.selenium.pages;
+package com.itacademy.selenium.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.selenium.listeners.LocalListener;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends BasePage {
@@ -18,7 +15,7 @@ public class HomePage extends BasePage {
     private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
 
     @FindBy(id = ("gs-login"))
-    private WebElement LoginButton;
+    private WebElement loginButton;
 
     @FindBy(id = ("mod_virtuemart_search"))
     private WebElement seachField;
@@ -27,23 +24,23 @@ public class HomePage extends BasePage {
     private WebElement searchButton;
 
     @FindBy(xpath = ("//p/a[contains(text(), ' Magnesium Citrate от VPLab ( 90 капс)')]"))
-    private WebElement MgnesiumItem;
+    private WebElement magnesiumItem;
 
     @FindBy(id = ("button-cart"))
     private WebElement addToCartButton;
 
     @FindBy(xpath = ("//*[@class = 'product-item col-xs-12 col-sm-12 col-md-6 col-lg-4 ']"))
-    private List<WebElement> CaffeineItems;
+    private List<WebElement> caffeineItems;
 
 //    @FindBy(xpath = (" //*[text()=' В корзину']"))
-//    private List<WebElement> AddToCartButtons;
+//    private List<WebElement> addToCartButtons;
 
 //    @FindBy(xpath = ("//div[@class = 'total_products']"))
-//    private WebElement ProductsInCart;
+//    private WebElement productsInCart;
 
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    public HomePage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public HomePage openURL() {
@@ -52,8 +49,8 @@ public class HomePage extends BasePage {
     }
 
     public LoginPage clickLoginButton() {
-        LoginButton.click();
-        return new LoginPage(driver);
+        loginButton.click();
+        return new LoginPage(driver, wait);
     }
 
     public HomePage inputSearchingProduct(String product) {
@@ -67,18 +64,18 @@ public class HomePage extends BasePage {
     }
 
     public HomePage selectMagnesiumItem() {
-        MgnesiumItem.click();
+        magnesiumItem.click();
         return this;
     }
 
     public CartPage addToCart() {
-        addToCartButton.click();
-        return new CartPage(driver);
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+        return new CartPage(driver, wait);
     }
 
 //    public HomePage addToCartAllItems() {
 //
-//        for (WebElement element : AddToCartButtons) {
+//        for (WebElement element : addToCartButtons) {
 //            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 //        }
 //        return this;
@@ -86,6 +83,6 @@ public class HomePage extends BasePage {
 
 
     public int countCaffeineItems() {
-        return CaffeineItems.size();
+        return caffeineItems.size();
     }
 }
