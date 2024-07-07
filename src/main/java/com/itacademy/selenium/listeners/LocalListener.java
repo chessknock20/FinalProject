@@ -29,4 +29,11 @@ public class LocalListener implements ITestListener {
         LOGGER.info("Test " + result.getMethod().getMethodName() +  " failed");
         LOGGER.info("=========================================================");
     }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        LOGGER.info("=========================================================");
+        LOGGER.info("Test " + result.getMethod().getMethodName() +  " skipped");
+        LOGGER.info("=========================================================");
+    }
 }

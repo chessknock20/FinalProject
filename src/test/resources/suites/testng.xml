@@ -2,13 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "SuiteSelenium" thread-count="1" parallel="methods">
+    <listeners>
+        <listener class-name="com.itacademy.selenium.utils.retry.AnnotationTransformer"/>
+    </listeners>
     <test name = "seleniumtests">
         <classes>
             <class name = "com.itacademy.seleniumtests.SportExpertTests" >
             </class>
             <class name = "com.itacademy.seleniumtests.LoginTest" >
                 <methods>
-                    <exclude name="testLoginValidUser"/>
+                    <exclude name="testLoginInvalidUser"/>
                 </methods>
             </class>
         </classes>
