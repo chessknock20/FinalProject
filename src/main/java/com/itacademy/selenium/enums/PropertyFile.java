@@ -3,7 +3,6 @@ package com.itacademy.selenium.enums;
 public enum PropertyFile {
 
     CONFIG("config.properties");
-//    USER("user.properties");
 
     private String pathToFile;
 

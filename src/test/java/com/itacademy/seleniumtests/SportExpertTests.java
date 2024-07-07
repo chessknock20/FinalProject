@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class SportExpertTests extends BaseTest {
 
     @Test
-    public void addToCartTest() {
+    public void testAddToCart() {
         HomePage homepage = new HomePage(driver, wait);
         String product = "magnesium";
         String result = homepage.openURL()
@@ -22,7 +22,7 @@ public class SportExpertTests extends BaseTest {
     }
 
     @Test
-    public void findAllItemsTest(){
+    public void testFindAllItems(){
         HomePage homepage = new HomePage(driver, wait);
         String product = "caffeine";
         int result = homepage.openURL()

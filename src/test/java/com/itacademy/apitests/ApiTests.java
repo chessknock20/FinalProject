@@ -1,8 +1,9 @@
 package com.itacademy.apitests;
 
+import com.itacademy.selenium.model.User;
+import com.itacademy.selenium.utils.UserCreator;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import com.itacademy.selenium.utils.PropertyReader;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -21,8 +22,9 @@ public class ApiTests extends BaseApiTest {
 
     @Test
     public void testSignInAuth(){
+        User testUser = UserCreator.withCredentials();
         given()
-                .auth().basic("chessknock20@gmail.com","110v354m")
+                .auth().basic(testUser.getUsername(), testUser.getPassword())
                 .when().get("/login/")
                 .then().log().all().statusCode(200);
     }

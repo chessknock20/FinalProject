@@ -31,23 +31,9 @@ public class PropertyReader {
         }
         return properties.getProperty(capability.getKey(), capability.getDefaultValue());
     }
-//    public static String getUserProperty(String key) {
-//
-//        Properties properties = new Properties();
-//        try {
-//            FileReader fileReader = new FileReader("src/main/resources/" + PropertyFile.USER.getPathToFile());
-//            properties.load(fileReader);
-//        } catch (IOException e) {
-//            LOGGER.info("Properties are not loaded. Use default value");
-//        }
-//
-//        return properties.getProperty(key);
-//    }
 
     public static String getConfigProperty(Capability capability) {
         return getProperty(PropertyFile.CONFIG, capability);
     }
-//    public static String getUserProperty(Capability capability) {
-//        return getProperty(PropertyFile.USER, capability);
-//    }
 }
+

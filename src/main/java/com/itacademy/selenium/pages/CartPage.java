@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage extends BasePage {
 
-//    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-
     @FindBy(xpath = ("//img[@class = 'cart-ico-vm']"))
     private WebElement cartButton;
 

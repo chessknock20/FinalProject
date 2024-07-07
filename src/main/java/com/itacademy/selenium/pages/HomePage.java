@@ -49,7 +49,7 @@ public class HomePage extends BasePage {
     }
 
     public LoginPage clickLoginButton() {
-        loginButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
         return new LoginPage(driver, wait);
     }
 
