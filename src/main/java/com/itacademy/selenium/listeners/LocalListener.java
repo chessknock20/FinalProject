@@ -1,13 +1,16 @@
 package com.itacademy.selenium.listeners;
 
+import com.itacademy.selenium.utils.ScreenshotUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 public class LocalListener implements ITestListener {
 
     private static final Logger LOGGER = LogManager.getLogger(LocalListener.class);
+    protected WebDriver driver;
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -28,6 +31,7 @@ public class LocalListener implements ITestListener {
         LOGGER.info("=========================================================");
         LOGGER.info("Test " + result.getMethod().getMethodName() +  " failed");
         LOGGER.info("=========================================================");
+        ScreenshotUtils.takeScreenshot(driver);
     }
 
     @Override

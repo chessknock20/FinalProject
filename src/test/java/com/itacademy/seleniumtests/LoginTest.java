@@ -41,9 +41,11 @@ public class LoginTest extends BaseTest{
         User testUser = UserCreator.withCredentials();
         boolean isAccountPresent = homepage.openURL()
                 .clickLoginButton()
-                .inputLogin(testUser.getUsername())
+            //    .inputLogin(testUser.getUsername())
+                .inputLogin("failtest")
                 .inputPassword(testUser.getPassword())
                 .confirm()
+                .clickCartButton()
                 .myAccountButtonIsPresent();
         Assert.assertTrue(isAccountPresent, "My account button is not displayed");
     }

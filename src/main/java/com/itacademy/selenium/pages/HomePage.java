@@ -32,11 +32,14 @@ public class HomePage extends BasePage {
     @FindBy(xpath = ("//*[@class = 'product-item col-xs-12 col-sm-12 col-md-6 col-lg-4 ']"))
     private List<WebElement> caffeineItems;
 
-//    @FindBy(xpath = (" //*[text()=' В корзину']"))
-//    private List<WebElement> addToCartButtons;
+    @FindBy(id = "vmCartModule")
+    private WebElement myCart;
 
-//    @FindBy(xpath = ("//div[@class = 'total_products']"))
-//    private WebElement productsInCart;
+    @FindBy(id = "gs-account")
+    private WebElement myAccountButton;
+
+    @FindBy(xpath = ("//div[@class = 'alert alert-danger']"))
+    private WebElement alertIncorrectData;
 
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
@@ -73,14 +76,18 @@ public class HomePage extends BasePage {
         return new CartPage(driver, wait);
     }
 
-//    public HomePage addToCartAllItems() {
-//
-//        for (WebElement element : addToCartButtons) {
-//            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-//        }
-//        return this;
-//    }
+    public HomePage clickCartButton() {
+        myCart.click();
+        return this;
+    }
 
+    public boolean myAccountButtonIsPresent() {
+        return myAccountButton.isDisplayed();
+    }
+
+    public String readAlert() {
+        return alertIncorrectData.getText();
+    }
 
     public int countCaffeineItems() {
         return caffeineItems.size();

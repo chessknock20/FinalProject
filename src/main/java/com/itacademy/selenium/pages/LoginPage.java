@@ -19,8 +19,6 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = ("//div[@class = 'alert alert-danger']"))
     private WebElement alertIncorrectData;
 
-    @FindBy(id = "gs-account")
-    private WebElement myAccountButton;
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -36,16 +34,14 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage confirm(){
+    public HomePage confirm(){
         loginButton.click();
-        return this;
+        return new HomePage(driver, wait);
     }
+
     public String readAlert(){
         return alertIncorrectData.getText();
     }
 
-    public boolean myAccountButtonIsPresent(){
-        return myAccountButton.isDisplayed();
-    }
 
 }

@@ -23,7 +23,7 @@ public class ElementActionListener implements WebDriverListener {
 
     @Override
     public void afterFindElement(WebDriver driver, By locator, WebElement result) {
-        LOGGER.info("element found successfully");
+        LOGGER.info(result.getTagName() +" found successfully");
     }
 
     @Override
