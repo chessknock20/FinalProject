@@ -41,8 +41,7 @@ public class LoginTest extends BaseTest{
         User testUser = UserCreator.withCredentials();
         boolean isAccountPresent = homepage.openURL()
                 .clickLoginButton()
-            //    .inputLogin(testUser.getUsername())
-                .inputLogin("failtest")
+                .inputLogin(testUser.getUsername())
                 .inputPassword(testUser.getPassword())
                 .confirm()
                 .clickCartButton()

@@ -1,5 +1,6 @@
 package com.itacademy.selenium.pages;
 
+import com.itacademy.selenium.utils.ScreenshotUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +30,7 @@ public class CartPage extends BasePage {
 
     public CartPage clickCartButton(){
         wait.until(ExpectedConditions.elementToBeClickable(cartButton)).click();
+        ScreenshotUtils.takeScreenshot(driver);
         return this;
     }
 

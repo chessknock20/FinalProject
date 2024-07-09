@@ -6,14 +6,31 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 
-    public synchronized static WebDriver createDriver(String browser) {
-        if (browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\chess\\drivers\\chromedriver.exe");
-            return new ChromeDriver();
-        } else if(browser.equals("firefox")) {
-            System.setProperty("webdriver.firefox.driver", "C:\\Users\\chess\\drivers\\geckodriver.exe");
-            return new FirefoxDriver();
+    private static final String RESOURCES_PATH = "C:\\Users\\chess\\drivers\\";
+    private static WebDriver driver;
+
+    private DriverFactory(){}
+
+    public static WebDriver getDriver(){
+        if (driver == null){
+            switch (System.getProperty("browser")){
+                case "firefox": {
+                    System.setProperty("webdriver.gecko.driver", RESOURCES_PATH + "geckodriver.exe");
+                    driver = new FirefoxDriver();
+                }
+                default: {
+                    System.setProperty("webdriver.chrome.driver", RESOURCES_PATH + "chromedriver.exe");
+                    driver = new ChromeDriver();
+                }
+            }
+            driver.manage().window().maximize();
         }
-        return null;
+        return driver;
+    }
+
+    public static void closeDriver(){
+        driver.quit();
+        driver = null;
     }
 }
+

@@ -11,7 +11,7 @@
             </class>
             <class name = "com.itacademy.seleniumtests.LoginTest" >
                 <methods>
-                    <exclude name="testLoginInvalidUser"/>
+                    <exclude name="testLoginValidUser"/>
                 </methods>
             </class>
         </classes>

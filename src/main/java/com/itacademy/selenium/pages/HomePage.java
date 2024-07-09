@@ -1,5 +1,6 @@
 package com.itacademy.selenium.pages;
 
+import com.itacademy.selenium.utils.ScreenshotUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -86,10 +87,12 @@ public class HomePage extends BasePage {
     }
 
     public String readAlert() {
+        ScreenshotUtils.takeScreenshot(driver);
         return alertIncorrectData.getText();
     }
 
     public int countCaffeineItems() {
+        ScreenshotUtils.takeScreenshot(driver);
         return caffeineItems.size();
     }
 }

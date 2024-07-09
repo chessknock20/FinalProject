@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverListener;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ElementActionListener implements WebDriverListener {
@@ -13,17 +14,17 @@ public class ElementActionListener implements WebDriverListener {
 
     @Override
     public void afterClick(WebElement element) {
-        LOGGER.info(element.getTagName() + " is clicked");
+        LOGGER.info(Arrays.stream(element.toString().split("->")).toList().get(1) + " is clicked");
     }
 
     @Override
     public void afterGetText(WebElement element, String result) {
-        LOGGER.info(element.getTagName() + "get text " + result);
+        LOGGER.info(Arrays.stream(element.toString().split("->")).toList().get(1) + "get text " + result);
     }
 
     @Override
     public void afterFindElement(WebDriver driver, By locator, WebElement result) {
-        LOGGER.info(result.getTagName() +" found successfully");
+        LOGGER.info(Arrays.stream(result.toString().split("->")).toList().get(1) +" found successfully");
     }
 
     @Override
