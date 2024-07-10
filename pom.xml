@@ -111,8 +111,7 @@
         <configuration>
           <suiteXmlFiles>
             <!--suppress UnresolvedMavenProperty -->
-            <suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
-            <suiteXmlFile>src/test/resources/suites/testngAPI.xml</suiteXmlFile>
+            <suiteXmlFile>src/test/resources/suites/${suite}.xml</suiteXmlFile>
           </suiteXmlFiles>
           <argLine> -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar" </argLine>
         </configuration>
