@@ -30,7 +30,6 @@ public class CartPage extends BasePage {
 
     public CartPage clickCartButton(){
         wait.until(ExpectedConditions.elementToBeClickable(cartButton)).click();
-        ScreenshotUtils.takeScreenshot(driver);
         return this;
     }
 

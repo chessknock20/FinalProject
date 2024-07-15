@@ -73,7 +73,7 @@ public class HomePage extends BasePage {
     }
 
     public CartPage addToCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+        addToCartButton.click();
         return new CartPage(driver, wait);
     }
 
@@ -87,12 +87,10 @@ public class HomePage extends BasePage {
     }
 
     public String readAlert() {
-        ScreenshotUtils.takeScreenshot(driver);
         return alertIncorrectData.getText();
     }
 
     public int countCaffeineItems() {
-        ScreenshotUtils.takeScreenshot(driver);
         return caffeineItems.size();
     }
 }

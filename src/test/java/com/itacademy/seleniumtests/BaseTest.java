@@ -3,9 +3,11 @@ package com.itacademy.seleniumtests;
 import com.itacademy.selenium.listeners.ElementActionListener;
 import com.itacademy.selenium.listeners.LocalListener;
 import com.itacademy.selenium.utils.DriverFactory;
+import com.itacademy.selenium.utils.ScreenshotUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -29,7 +31,10 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void closeSession() {
+    public void closeSession(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()){
+            ScreenshotUtils.takeScreenshot(driver);
+        }
         DriverFactory.closeDriver();
     }
 }

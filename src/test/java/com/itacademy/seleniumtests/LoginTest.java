@@ -7,13 +7,13 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
 
     static final String ERROR_MESSAGE = "Неправильно заполнены поля E-Mail и/или пароль!";
 
     @DataProvider(name = "data")
-    public Object[][] getData(){
+    public Object[][] getData() {
         return new Object[][]{
                 {UserCreator.withWrongCredentials(), ERROR_MESSAGE},
                 {UserCreator.withEmptyUsername(), ERROR_MESSAGE},
@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(dataProvider = "data")
-    public void testLoginInvalidUser(User user, String errorMessage){
+    public void testLoginInvalidUser(User user, String errorMessage) {
         HomePage homepage = new HomePage(driver, wait);
         String message = homepage.openURL()
                 .clickLoginButton()
@@ -36,7 +36,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void testLoginValidUser(){
+    public void testLoginValidUser() {
         HomePage homepage = new HomePage(driver, wait);
         User testUser = UserCreator.withCredentials();
         boolean isAccountPresent = homepage.openURL()
